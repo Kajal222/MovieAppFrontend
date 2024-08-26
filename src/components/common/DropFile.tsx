@@ -63,7 +63,7 @@ function DropFile({ setFilesCallback, files }: any) {
         isDragReject
     ]);
     return (
-        <div className="container h-full">
+        <div className="container h-52 md:h-full px-0 md:px-8">
             <div {...getRootProps({ isFocused, isDragAccept, isDragReject, style })}>
                 <input {...getInputProps()} />
                 {files.length > 0 ?

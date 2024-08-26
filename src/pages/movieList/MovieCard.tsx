@@ -8,7 +8,7 @@ const defaultPoster = "https://s3-alpha-sig.figma.com/img/71b7/26c9/bdb04893d926
 const MovieCard = ({ data }: { data: Movie }) => {
     const navigate = useNavigate();
     return (
-        <div className="w-1/4 p-3 h-fit max-h-fit">
+        <div className="w-1/2 md:w-1/4 p-3 h-fit max-h-fit">
             <Card className="bg-cardColor border-cardColor rounded-lg">
                 <CardHeader className="p-2">
                     <img src={imgBaseUrl + data.poster}

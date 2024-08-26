@@ -4,7 +4,7 @@ import api from './apiService';
 api.interceptors.request.use(
   (config) => {
     // Modify request config before sending it
-    const token = localStorage.getItem('token'); // Get token from local storage (or other secure storage)
+    const token = sessionStorage.getItem('token'); // Get token from local storage (or other secure storage)
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

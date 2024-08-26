@@ -25,12 +25,12 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = (newToken: string) => {
     setToken(newToken);
-    localStorage.setItem('authToken', newToken);
+    sessionStorage.setItem('authToken', newToken);
   };
 
   const logout = () => {
     setToken(null);
-    localStorage.removeItem('authToken');
+    sessionStorage.removeItem('authToken');
   };
 
   return (

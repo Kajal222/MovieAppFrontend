@@ -52,35 +52,39 @@ const CreateUpdateMovie = ({ type }: { type: string, data: any }) => {
     return (
         <div className="p-0 h-full">
             <div className="flex flex-col md:flex-row h-full w-full">
-                <div className=" p-2 pb-0 flex-column overflow-auto w-full">
+                <div className=" p-2 pb-0 flex-column overflow-auto w-full h-full">
                     <div className="montserrat-font pt-1 w-full h-full">
-                        <div className="text-white font-bold text-3xl pt-15 text-left montserrat-font p-10 pb-15 pl-20">
+                        <div className="text-white font-bold text-3xl pt-15 text-left montserrat-font p-10 pb-15 md:pl-20">
                             {type === "create" ? 'Create a new movie' : type === "update" ? 'Edit' : ''}
                         </div>
-                        <div className="flex flex-wrap h-4/6">
-                            <div className="w-1/2 h-100 px-10">
+                        <div className="flex flex-wrap flex-col md:flex-row justify-center items-center md:items-stretch h-full md:h-4/6">
+                            <div className="w-full md:w-1/2 h-100 px-10 hidden md:block">
                                 <DropFile setFilesCallback={onDrop} files={files} />
                             </div>
-                            <div className="w-1/2 h-full text-left">
+                            <div className="w-4/5 md:w-1/2 h-full text-left">
                                 <input
                                     type="text"
                                     name="title"
                                     id="title"
                                     placeholder="Title"
-                                    className="appearance-none bg-fieldBg bg-opacity-50 rounded-lg font-medium text-white text-sm w-80 py-2 px-3 mb-3 leading-tight h-11"
+                                    className="appearance-none bg-fieldBg bg-opacity-50 rounded-lg font-medium text-white text-sm w-full md:w-80 py-2 px-3 mb-3 leading-tight h-11"
                                     value={movieData.title}
                                     onChange={(e) => setMovieData({ ...movieData, title: e.target.value })}
                                 />
+                                <br/>
                                 <input
-                                    type="text"
+                                    type="number"
                                     name="publishedYear"
                                     id="publishedYear"
                                     placeholder="Published Year"
-                                    className="appearance-none bg-fieldBg bg-opacity-50 rounded-lg font-medium text-white text-sm w-50 py-2 px-3 mb-3 leading-tight h-11"
+                                    className="appearance-none bg-fieldBg bg-opacity-50 rounded-lg font-medium text-white text-sm w-full md:w-52 py-2 px-3 mb-3 leading-tight h-11"
                                     value={movieData.publishedYear}
                                     onChange={(e) => setMovieData({ ...movieData, publishedYear: e.target.value })}
                                 />
-                                <div className="mt-10">
+                                <div className="w-full md:hidden h-fit">
+                                    <DropFile setFilesCallback={onDrop} files={files} />
+                                </div>
+                                <div className="mt-10 text-center md:text-left">
                                     <button className="bg-buttonBg text-white font-bold text-sm py-3 px-10 mr-4 border border-white rounded-lg"
                                         onClick={() => navigate('/movieList')}
                                     >Cancel</button>

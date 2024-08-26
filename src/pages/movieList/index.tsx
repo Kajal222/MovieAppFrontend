@@ -52,10 +52,10 @@ const MovieList = () => {
     return (
         <div className="p-0 h-full">
             <div className="flex flex-col md:flex-row h-full w-full">
-                <div className=" p-14 pb-0 flex-column overflow-auto w-full">
+                <div className="p-0 pt-10 md:p-14 pb-0 flex-column overflow-auto w-full">
                     {movieList.length > 0 ?
                         <div className="montserrat-font pt-1 w-full">
-                            <div className="flex justify-between text-white pt-15 text-left montserrat-font pb-5">
+                            <div className="flex justify-between text-white pt-15 text-left montserrat-font px-5 pb-5">
                                 <div className="flex items-center gap-5 font-bold text-3xl">
                                     My movies
                                     <span onClick={() => { navigate('/createMovie') }}>

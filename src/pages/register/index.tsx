@@ -126,7 +126,7 @@ const Register = () => {
                                             <div className="text-center my-6">
                                                 <label className="flex items-center justify-center text-center text-white font-normal">
                                                     <a className="text-sm" href="/#/login">
-                                                        Already have an account? Login.
+                                                        Already have an account? Click here to login
                                                     </a>
                                                 </label>
                                             </div>
