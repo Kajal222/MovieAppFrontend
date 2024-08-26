@@ -17,7 +17,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const savedToken = sessionStorage.getItem('authToken');
+    const savedToken = sessionStorage.getItem('authToken') || localStorage.getItem('authToken');
     if (savedToken) {
       setToken(savedToken);
     }

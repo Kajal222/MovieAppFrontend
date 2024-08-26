@@ -29,7 +29,7 @@ const MovieList = () => {
     const navigate = useNavigate();
 
     const getMovieListHandler = async () => {
-        let result = await getmovieListService(sessionStorage.getItem('email') ?? '');
+        let result = await getmovieListService((sessionStorage.getItem('email') || localStorage.getItem('email')) ?? '');
         if (result) {
             setMovieList(result.filter(movie => movie.title.length > 0));
         }
@@ -39,12 +39,14 @@ const MovieList = () => {
     }, [])
 
     const logoutHandler = async () => {
-        if (sessionStorage.getItem('email')) {
-            let result = await logoutService({ email: sessionStorage.getItem('email') ?? '' });
+        if (sessionStorage.getItem('email') || localStorage.getItem('email')) {
+            let result = await logoutService({ email: (sessionStorage.getItem('email') || localStorage.getItem('email')) ?? '' });
             (result);
             if (result) {
                 sessionStorage.removeItem('email')
                 sessionStorage.removeItem('authToken')
+                localStorage.removeItem('email')
+                localStorage.removeItem('authToken')
                 navigate('/login')
             }
         }

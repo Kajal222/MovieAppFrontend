@@ -32,7 +32,7 @@ const CreateUpdateMovie = ({ type }: { type: string, data: any }) => {
             if (files && files[0]) {
                 formData.append("poster", files[0]);
             }
-            formData.append("email", sessionStorage.getItem('email') ?? '')
+            formData.append("email", (sessionStorage.getItem('email') || localStorage.getItem('email')) ?? '')
             let result = await addMovieService(formData)
             if (result) navigate('/movieList')
         }
@@ -43,7 +43,7 @@ const CreateUpdateMovie = ({ type }: { type: string, data: any }) => {
             if (files && files[0]) {
                 formData.append("poster", files[0]);
             }
-            formData.append("email", sessionStorage.getItem('email') ?? '')
+            formData.append("email", (sessionStorage.getItem('email') || localStorage.getItem('email')) ?? '')
             formData.append("id", String(movieData._id));
             let result = await updateMovieService(formData)
             if (result) navigate('/movieList')
@@ -71,7 +71,7 @@ const CreateUpdateMovie = ({ type }: { type: string, data: any }) => {
                                     value={movieData.title}
                                     onChange={(e) => setMovieData({ ...movieData, title: e.target.value })}
                                 />
-                                <br/>
+                                <br />
                                 <input
                                     type="number"
                                     name="publishedYear"

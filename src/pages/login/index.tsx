@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FooterBg from "../../assets/images/footer.png";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -22,14 +22,19 @@ interface ApiErrors {
 }
 const Login = () => {
     const navigate = useNavigate();
-    const tokenValue = sessionStorage.getItem("authToken")
+    const tokenValue = sessionStorage.getItem("authToken") || localStorage.getItem("authToken")
+    const [rememberMe, setRememberMe] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
-        // sessionStorage.removeItem("authToken");  
         if (tokenValue && tokenValue.length > 0) {
-            // navigate("/dashboard");
+            navigate("/movieList");
         }
     }, [tokenValue]);
+
+    const handleRememberMeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRememberMe(event.target.checked);
+    }
 
     return (
         <div className="h-screen w-full bg-pageBackgroundColor relative flex flex-col jusitfy-center items-center overflow-auto">
@@ -49,8 +54,14 @@ const Login = () => {
                                             const { email, password } = values;
                                             const data = { email, password };
                                             const result = await loginService(data);
-                                            await sessionStorage.setItem("authToken", result.loginToken);
-                                            sessionStorage.setItem('email', result.email);
+                                            // Use localStorage for persistent sessions (with "Remember Me") and sessionStorage for non-persistent sessions.
+                                            if (rememberMe) {
+                                                localStorage.setItem("authToken", result.loginToken);
+                                                localStorage.setItem('email', result.email);
+                                            } else {
+                                                sessionStorage.setItem("authToken", result.loginToken);
+                                                sessionStorage.setItem('email', result.email);
+                                            }
                                             navigate("/movieList")
                                             resetForm();
                                         } catch (error: any) {
@@ -112,7 +123,8 @@ const Login = () => {
                                                 />
                                                 <div className="text-center my-6">
                                                     <label className="flex items-center justify-center text-center text-fontColor1-500 font-normal">
-                                                        <input className="mr-2 leading-tight" type="checkbox" style={{ width: "18px", height: "18px" }} />
+                                                        <input checked={rememberMe} onChange={handleRememberMeChange}
+                                                            className="mr-2 leading-tight" type="checkbox" style={{ width: "18px", height: "18px" }} />
                                                         <span className="text-sm">
                                                             Remember me
                                                         </span>

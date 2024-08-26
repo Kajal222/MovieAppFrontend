@@ -18,7 +18,7 @@ interface StorageProviderProps {
 const StorageProvider: React.FC<StorageProviderProps> = ({ children }) => {
 
     const [storage, setStorage] = useState({
-        token: sessionStorage.getItem('token'),
+        token: sessionStorage.getItem('authToken') || localStorage.getItem('authToken'),
     });
 
     const updateStorage = (key: string, value: string) => {

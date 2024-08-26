@@ -22,12 +22,12 @@ interface ApiErrors {
 }
 const Register = () => {
     const navigate = useNavigate();
-    const tokenValue = sessionStorage.getItem("authToken")
+    const tokenValue = sessionStorage.getItem("authToken") || localStorage.getItem("authToken")
     useEffect(() => {
         window.scrollTo(0, 0);
         // sessionStorage.removeItem("authToken");  
         if (tokenValue && tokenValue.length > 0) {
-            // navigate("/dashboard");
+            navigate("/movieList");
         }
     }, [tokenValue]);
 
