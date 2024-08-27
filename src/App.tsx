@@ -56,7 +56,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/" element={<UserLayout />}>
-                    <Route index element={<MovieList />} />
+                    <Route index element={<PrivateRoute component={MovieList} />} />
                     <Route path="/movieList" element={<PrivateRoute component={MovieList} />} />
                     <Route path="/createMovie" element={<PrivateRoute component={CreateMovie} />} />
                     <Route path="/updateMovie" element={<PrivateRoute component={UpdateMovie} />} />

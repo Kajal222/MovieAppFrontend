@@ -75,6 +75,7 @@ const Login = () => {
                                                             setFieldError(field, apiErrors[field]!);
                                                         });
                                                     }
+                                                    setStatus(error.response.data.message);
                                                 } else if (status === 500) {
                                                     setStatus("Server error. Please try again later.");
                                                 }
@@ -155,8 +156,8 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <img src={FooterBg} />
+            <div className="w-full">
+                <img src={FooterBg} className="w-full" />
             </div>
         </div >
     );

@@ -7,8 +7,8 @@ const UserLayout = () => {
             <div className="h-full w-full p-0 md:rounded-2xl overflow-auto">
                 <Outlet />
             </div>
-            <div>
-                <img src={FooterBg} />
+            <div className="w-full">
+                <img src={FooterBg} className="w-full" />
             </div>
         </div >
     );

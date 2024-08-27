@@ -139,8 +139,8 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <img src={FooterBg} />
+            <div className="w-full">
+                <img src={FooterBg} className="w-full" />
             </div>
         </div >
     );

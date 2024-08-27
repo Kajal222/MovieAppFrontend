@@ -17,7 +17,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ component: Component }) => 
     }, [tokenStr])
 
     return (
-        tokenStr ? <Component /> : <Component />
+        tokenStr ? <Component /> : <></>
     );
 };
 
